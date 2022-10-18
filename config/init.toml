@@ -1,27 +1,27 @@
 [CoatingMod2D]
-type_algorithm = "genetic" # genetic or simulated_annealing
+type_algorithm = "simulated_annealing" # genetic or simulated_annealing
 space_width = 9
 num_blocks = 20
 
 
 [GeneticAlgorithm]
-type_stop = "generations" # generations or compute_time
-num_generations = 4000
-compute_time = 60
+type_stop = "compute_time" # generations or compute_time
+num_generations = 500
+compute_time = 180
 population_size = 500
 # area_factor = 0.5
-gen_to_final_judgment = 60
+gen_to_final_judgment = 75
 survivors = 2
-K = 5
-mutation_rate = 0.7
+K = 10
+mutation_rate = 0.8
 per_children_choose = 0.9
 
 
 [SimulatedAnnealing]
-type_stop = "iterations" # iterations or compute_time
+type_stop = "compute_time" # iterations or compute_time
 num_iterations = 1000
-compute_time = 60
-T_init = 100
+compute_time = 180
+T_init = 100000
 T_end = 0.000000001
-type_update = "div" # linear or exp or div
-k = 0.00002 # pequeño con type_update = "linear , 0.88 - 0.99 con type_update = "exp", > 0.01 con type_update = "div"
+type_update = "exp" # linear or exp or div
+k = 0.99 # pequeño con type_update = "linear , 0.88 - 0.99 con type_update = "exp", > 0.01 con type_update = "div"

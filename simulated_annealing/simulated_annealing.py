@@ -135,7 +135,7 @@ class SimulatedAnnealing:
         """
         Funcion para calcular la probabilidad de aceptacion
         """
-        if new_fitness > self.best_fitness:
+        if new_fitness < self.best_fitness:
             return 1.0
         return self.probability(self.best_fitness, new_fitness, self.T)
 

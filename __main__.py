@@ -17,7 +17,7 @@ from genetic.genetic import Genetic
 from simulated_annealing.simulated_annealing import SimulatedAnnealing
 
 def main():
-    # seed(2022)
+    seed(2022)
 
     config = Config()
 
@@ -45,7 +45,13 @@ def main():
                 'mejores_individuos': genetic.best_individuals,
                 'peores_individuos': genetic.worst_individuals,
                 'fitness_promedio': genetic.average_fitnesses,
-                'fitness_mediana': genetic.median_fitnesses
+                'fitness_mediana': genetic.median_fitnesses,
+                'num_individuos': config.population_size,
+                'k': config.K,
+                'gen_to_final_judgment': config.gen_to_final_judgment,
+                'survivors': config.survivors,
+                'mutation_rate': config.mutation_rate,
+                'compute_time': config.compute_time,
             }
             if not isdir("resultados_genetico"):
                 makedirs("resultados_genetico")
@@ -69,13 +75,17 @@ def main():
             results = {
                 'soluciones': simulated_annealing.actual_fitnesses,
                 'temperaturas': simulated_annealing.Ts,
-                'mejor_solucion': simulated_annealing.best_solution.fitness
+                'mejor_solucion': simulated_annealing.best_solution.fitness,
+                'T_init': config.T_init,
+                'T_end': config.T_end,
+                'k': config.k,
+                'type_update': config.type_update,
+                'compute_time': config.compute_time,
             }
             if not isdir("resultados_enfriamiento_simulado"):
                 makedirs("resultados_enfriamiento_simulado")
             with open(f"resultados_enfriamiento_simulado/{config.name}.json", "w") as f:
                 dump(results, f, indent=4)
-            simulated_annealing.best_solution.draw()
 
         else:
             raise ValueError("No se ha especificado un algoritmo valido")
