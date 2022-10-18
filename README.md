@@ -6,6 +6,12 @@ Este es el problema de recubrimiento 2D tipico de la literatura. Se trata de enc
 
 ## Ejecución
 
+Antes de ejecutar el programa deben instalarse las dependencias. Para esto se debe ejecutar el siguiente comando:
+
+```bash
+pip install -r requirements.txt
+```
+
 Para ejecutar el programa se debe ejecutar el archivo `__main__.py` con el siguiente comando:
 
 ```bash
