@@ -103,33 +103,33 @@ class SimulatedAnnealing:
         Funcion para actualizar la temperatura
         """
         if self.type_update == "linear":
-            T_new = self.alfa_lineal(self.T, self.i, self.k)
+            T_new = self.alfa_lineal()
         elif self.type_update == "exp":
-            T_new = self.alfa_exp(self.T, self.k)
+            T_new = self.alfa_exp()
         elif self.type_update == "div":
-            T_new = self.alfa_div(self.T, self.i,  self.k)
+            T_new = self.alfa_div()
         if T_new <= self.T_end:
             return self.T_end
         else:
             return T_new
 
-    def alfa_lineal(self, T_init: float, i: int, k: float) -> float:
+    def alfa_lineal(self) -> float:
         """
         Funcion para calcular el alfa lineal
         """
-        return T_init - k * i
+        return self.T_init - self.k * self.i
 
-    def alfa_exp(self, T: float, k: float = 0.9) -> float:
+    def alfa_exp(self) -> float:
         """
         Funcion para calcular el alfa exponencial
         """
-        return k * T
+        return self.k * self.T
 
-    def alfa_div(self, T: float, i: int, k: float) -> float:
+    def alfa_div(self) -> float:
         """
         Funcion para calcular el alfa
         """
-        return T / (1 + k * i)
+        return self.T / (1 + self.k * self.T)
 
     def acceptance_probability(self, new_fitness: float) -> float:
         """
